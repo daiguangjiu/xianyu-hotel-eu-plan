@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>欧洲酒店代订｜闲鱼投放策略方案</title>
+<style>
+:root{
+  --ink:#0f1720; --ink2:#374651; --muted:#6d7d8a; --line:#e2e8ee;
+  --bg:#f4f6f9; --card:#fff;
+  --brand:#00b6a1; --brand-d:#008f80; --brand-l:#e6f8f5;
+  --gold:#c8901a; --gold-l:#fffaef;
+  --red:#d94a2e; --red-l:#fff4f2;
+  --blue:#2f6df6; --blue-l:#eff3fe;
+  --purple:#6b46c9;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased;font-size:14px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 18px 70px}
+
+/* hero */
+.hero{background:linear-gradient(135deg,#071b23 0%,#0c3b42 52%,#08282e 100%);color:#fff;padding:42px 0 34px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-150px;top:-150px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(0,182,161,.36),transparent 66%)}
+.hero::before{content:"";position:absolute;left:-90px;bottom:-170px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(200,144,26,.15),transparent 68%)}
+.hero .wrap{padding-bottom:0;position:relative;z-index:2}
+.eyebrow{display:inline-block;font-size:11px;letter-spacing:.18em;color:#7fe3d6;border:1px solid rgba(127,227,214,.36);padding:4px 11px;border-radius:3px;margin-bottom:16px}
+.hero h1{font-size:31px;line-height:1.28;font-weight:700;letter-spacing:-.6px}
+.hero h1 em{font-style:normal;color:#66e0ce}
+.hero p.sub{color:#a9c2c7;font-size:13.5px;margin-top:12px;max-width:780px;line-height:1.78}
+.meta{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:20px;font-size:12.5px;color:#93aeb4}
+.meta b{color:#fff;font-weight:600}
+.verdict{margin-top:20px;background:rgba(255,255,255,.07);border-left:3px solid var(--brand);padding:13px 17px;border-radius:0 6px 6px 0;font-size:13.5px;color:#e4f3f1;line-height:1.8;max-width:940px}
+.verdict b{color:#66e0ce}
+
+/* tabs */
+.tabs{position:sticky;top:0;z-index:40;background:rgba(244,246,249,.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line);margin-bottom:22px}
+.tabs-in{max-width:1100px;margin:0 auto;display:flex;gap:2px;overflow-x:auto;padding:0 18px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.tabs-in::-webkit-scrollbar{display:none}
+.tabs button{border:0;background:none;padding:13px 15px;font-size:13.5px;color:var(--muted);cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;font-family:inherit;transition:color .15s}
+.tabs button:hover{color:var(--ink)}
+.tabs button.on{color:var(--brand-d);border-bottom-color:var(--brand);font-weight:600}
+
+/* panel */
+.panel{display:none}
+.panel.on{display:block;animation:fade .22s ease}
+@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:26px 28px;margin-bottom:16px}
+h2{font-size:20px;margin-bottom:6px;letter-spacing:-.2px;line-height:1.4}
+h2 .n{color:var(--brand);font-family:ui-monospace,Menlo,monospace;font-size:13px;margin-right:8px;vertical-align:2px}
+.desc{color:var(--muted);font-size:13px;margin-bottom:20px;line-height:1.78}
+h3{font-size:15px;margin:26px 0 11px;padding-left:10px;border-left:3px solid var(--brand);line-height:1.35}
+h3:first-child{margin-top:0}
+h4{font-size:13px;margin-bottom:7px;color:var(--ink)}
+p{font-size:13.5px;color:var(--ink2);margin-bottom:10px;line-height:1.8}
+ul,ol{font-size:13.5px;color:var(--ink2);padding-left:19px;line-height:1.8}
+li{margin-bottom:5px}
+strong{color:var(--ink);font-weight:600}
+code{background:#eef3f6;padding:1px 5px;border-radius:3px;font-size:12px;font-family:ui-monospace,Menlo,monospace;color:#0b5d63}
+
+/* table */
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:520px}
+th{background:#eef3f6;text-align:left;padding:9px 12px;font-weight:600;color:var(--ink);border-bottom:1px solid var(--line);font-size:12px;white-space:nowrap}
+td{padding:10px 12px;border-bottom:1px solid #eef2f5;color:var(--ink2);vertical-align:top;line-height:1.65}
+tr:last-child td{border-bottom:0}
+tbody tr:hover{background:#fafcfd}
+.tw table{margin:0}
+td.c,th.c{text-align:center}
+td.num{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;white-space:nowrap}
+tr.sum td{background:#f5fafa;font-weight:600;color:var(--ink)}
+.bar{display:inline-block;height:7px;border-radius:4px;background:linear-gradient(90deg,#00b6a1,#5ad4c4);vertical-align:middle;margin-right:7px}
+.bar.g{background:linear-gradient(90deg,#c8901a,#e2b559)}
+
+/* blocks */
+.grid{display:grid;gap:13px}
+.g2{grid-template-columns:1fr 1fr}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.box{border:1px solid var(--line);border-radius:8px;padding:16px 18px;background:#fbfcfd}
+.box h4{font-size:13px;margin-bottom:7px;color:var(--ink)}
+.box p{font-size:12.5px;margin-bottom:0;color:var(--muted);line-height:1.72}
+.box ul{font-size:12.5px;margin-top:7px;color:var(--muted);padding-left:16px;line-height:1.72}
+
+.kpi{display:flex;flex-direction:column;gap:2px;background:#fff;border:1px solid var(--line);border-top:3px solid var(--brand);border-radius:0 0 8px 8px;padding:15px 17px}
+.kpi .l{font-size:11.5px;color:var(--muted)}
+.kpi .v{font-size:25px;font-weight:700;letter-spacing:-1px;color:var(--ink);line-height:1.22}
+.kpi .s{font-size:11.5px;color:var(--brand-d);margin-top:1px}
+.kpi.gd{border-top-color:var(--gold)} .kpi.gd .s{color:#8a6410}
+.kpi.bl{border-top-color:var(--blue)} .kpi.bl .s{color:#2b56c0}
+.kpi.pu{border-top-color:var(--purple)} .kpi.pu .s{color:#553a9e}
+
+.note{border-left:3px solid var(--gold);background:var(--gold-l);padding:13px 16px;font-size:13px;color:#6b5320;border-radius:0 6px 6px 0;margin:14px 0;line-height:1.8}
+.warn{border-left:3px solid var(--red);background:var(--red-l);padding:13px 16px;font-size:13px;color:#8c3423;border-radius:0 6px 6px 0;margin:14px 0;line-height:1.8}
+.ok{border-left:3px solid var(--brand);background:var(--brand-l);padding:13px 16px;font-size:13px;color:#0a5a52;border-radius:0 6px 6px 0;margin:14px 0;line-height:1.8}
+.info{border-left:3px solid var(--blue);background:var(--blue-l);padding:13px 16px;font-size:13px;color:#1f3f96;border-radius:0 6px 6px 0;margin:14px 0;line-height:1.8}
+.note b,.warn b,.ok b,.info b{color:inherit;font-weight:700}
+
+.tag{display:inline-block;font-size:11px;padding:1.5px 7px;border-radius:99px;background:#eef3f6;color:#47606c;margin:0 3px 3px 0;white-space:nowrap;line-height:1.6}
+.tag.g{background:#e5f8f4;color:#067a6d}
+.tag.y{background:#fdf3dc;color:#8a6410}
+.tag.r{background:#fdeeea;color:#b23f28}
+.tag.b{background:#eaf0fe;color:#2b56c0}
+.tag.p{background:#f0eafd;color:#553a9e}
+
+/* code */
+.code{background:#0f1720;color:#c9d9e2;border-radius:9px;overflow:hidden;border:1px solid #1e2b36;margin:11px 0}
+.code-h{display:flex;justify-content:space-between;align-items:center;padding:9px 14px;background:#16232e;border-bottom:1px solid #22323f;font-size:11.5px;color:#8fa4b2;gap:10px}
+.code-h .cp{background:var(--brand);color:#04211d;border:0;border-radius:5px;padding:4px 11px;font-size:11.5px;font-weight:600;cursor:pointer;font-family:inherit;flex:0 0 auto}
+.code-h .cp:hover{background:#22d3bb}
+.code pre{white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;line-height:1.82;padding:16px 18px;color:#c9d9e2}
+.code pre b{color:#66e0ce;font-weight:600}
+.code pre i{color:#d9a93b;font-style:normal}
+
+/* timeline */
+.tl{position:relative;padding-left:22px;margin-top:14px}
+.tl::before{content:"";position:absolute;left:5px;top:8px;bottom:8px;width:2px;background:linear-gradient(#00b6a1,#cfe6e2)}
+.tl-i{position:relative;margin-bottom:18px}
+.tl-i::before{content:"";position:absolute;left:-22px;top:5px;width:10px;height:10px;border-radius:50%;background:#fff;border:2.5px solid var(--brand)}
+.tl-i h4{font-size:13.5px;margin-bottom:3px}
+.tl-i .d{font-size:11px;color:var(--brand-d);font-weight:600;letter-spacing:.05em;margin-bottom:3px}
+.tl-i p{font-size:12.5px;margin:0;color:var(--muted)}
+
+/* checklist */
+.chk{list-style:none;padding:0}
+.chk li{display:flex;gap:9px;align-items:flex-start;padding:8px 0;border-bottom:1px dashed #eceff2;font-size:13px}
+.chk li:last-child{border-bottom:0}
+.chk .bx{flex:0 0 14px;height:14px;border:1.5px solid #c2ccd4;border-radius:3px;margin-top:4px}
+
+.footer{text-align:center;font-size:11.5px;color:#9aa9b4;margin-top:28px;line-height:2}
+
+/* mobile */
+@media(max-width:820px){ .g3,.g4{grid-template-columns:1fr 1fr} }
+@media(max-width:640px){
+  body{font-size:13.5px}
+  .wrap{padding:0 13px 60px}
+  .hero{padding:30px 0 26px}
+  .hero h1{font-size:22px;line-height:1.36}
+  .hero p.sub{font-size:12.5px}
+  .verdict{font-size:12.5px;padding:11px 14px}
+  .card{padding:18px 16px;border-radius:9px}
+  h2{font-size:17px}
+  h3{font-size:14px;margin:22px 0 10px}
+  .tabs-in{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;padding:7px 10px;overflow:visible}
+  .tabs button{padding:9px 5px;font-size:11.5px;border:1px solid var(--line);border-radius:7px;border-bottom-width:1px;text-align:center;line-height:1.3;white-space:normal;min-height:40px;display:flex;align-items:center;justify-content:center}
+  .tabs button.on{border-color:var(--brand);background:var(--brand-l)}
+  .g2,.g3,.g4{grid-template-columns:1fr}
+  table{font-size:12px;min-width:460px}
+  th,td{padding:8px 9px}
+  .kpi .v{font-size:21px}
+}
+@media(max-width:380px){ .tabs-in{grid-template-columns:repeat(2,1fr)} }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <span class="eyebrow">XIAnYU AD STRATEGY · 2026</span>
+    <h1>欧洲酒店代订｜闲鱼投放策略方案<br><em>四城起盘</em>· 巴黎 · 米兰 · 巴塞罗那 · 罗马</h1>
+    <p class="sub">本方案围绕闲鱼平台的搜索流量结构与「超级擦亮」广告机制设计，解决三个问题：<b style="color:#7fe3d6">选哪些城市打</b>、<b style="color:#7fe3d6">用什么商品结构接住流量</b>、<b style="color:#7fe3d6">花多少钱能跑通</b>。所有策略均给出可执行的动作与判断标准。</p>
+    <div class="meta">
+      <span>闲鱼账号：<b>xy885852949366</b></span>
+      <span>首阶段市场：<b>欧洲（申根区）</b></span>
+      <span>起盘城市：<b>4 个</b></span>
+      <span>方案版本：<b>V1.0 / 2026-10</b></span>
+    </div>
+    <div class="verdict">
+      <b>方案主张：</b>欧洲酒店代订在闲鱼不是"拼低价"的生意，是<b>拼搜索覆盖 × 封面点击率 × 咨询响应速度</b>的生意。因此本方案以「城市 × 品牌 × 场景」的商品矩阵为主干，用数量占据搜索位；以专家号人设承接高客单；付费推广只作为加速器，且只投客单价足够高的商品。
+    </div>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tabs-in" id="tabs">
+    <button class="on" data-p="p1">01 方案总览</button>
+    <button data-p="p2">02 城市选择</button>
+    <button data-p="p3">03 账号矩阵</button>
+    <button data-p="p4">04 商品矩阵</button>
+    <button data-p="p5">05 内容与封面</button>
+    <button data-p="p6">06 投放策略</button>
+    <button data-p="p7">07 数据优化</button>
+    <button data-p="p8">08 咨询转化</button>
+    <button data-p="p9">09 合规风控</button>
+    <button data-p="p10">10 执行计划</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ============ 01 ============ -->
+<div class="panel on" id="p1">
+  <div class="card">
+    <h2><span class="n">01</span>方案总览</h2>
+    <p class="desc">一页看懂：打哪里、怎么打、投多少、怎么验收。</p>
+
+    <h3>1.1 核心策略：三件事决定成败</h3>
+    <div class="grid g3">
+      <div class="box" style="border-top:3px solid var(--brand)">
+        <h4>① 搜索覆盖：用商品数量占位</h4>
+        <p>欧洲酒店是典型的<b>搜索型需求</b>——用户行程已定，直接搜"巴黎酒店""罗马住宿"。这类流量占六成以上，谁覆盖的词多，谁拿到的咨询就多。所以第一优先级是<b>铺满城市 × 品牌 × 地标的组合</b>。</p>
+      </div>
+      <div class="box" style="border-top:3px solid var(--gold)">
+        <h4>② 封面点击率：1 秒钟的胜负</h4>
+        <p>同一批搜索结果里，用户只会点开看起来"像样"的那几个。封面决定点击率，点击率决定平台给你的后续曝光。<b>封面是投入产出比最高的优化项。</b></p>
+      </div>
+      <div class="box" style="border-top:3px solid var(--blue)">
+        <h4>③ 咨询响应：5 分钟定输赢</h4>
+        <p>酒店代订客单价高，用户必然先问。同一个用户通常同时问 3–5 家，<b>谁先给出专业、具体的回复，谁就拿到这单。</b>响应速度比话术漂亮更重要。</p>
+      </div>
+    </div>
+
+    <h3>1.2 关键数字</h3>
+    <div class="grid g4">
+      <div class="kpi"><span class="l">起盘城市</span><span class="v">4 个</span><span class="s">巴黎 · 米兰 · 巴塞罗那 · 罗马</span></div>
+      <div class="kpi gd"><span class="l">首月上线商品</span><span class="v">30 条</span><span class="s">城市级 24 + 品牌级 6</span></div>
+      <div class="kpi bl"><span class="l">运营账号</span><span class="v">5 个</span><span class="s">3 矩阵号 + 2 专家号</span></div>
+      <div class="kpi pu"><span class="l">建议日预算</span><span class="v">¥250</span><span class="s">5 号合计，可分期投入</span></div>
+    </div>
+
+    <h3>1.3 三个月路线</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th style="width:12%">阶段</th><th style="width:14%">时间</th><th style="width:30%">核心任务</th><th style="width:22%">阶段目标</th><th>进入下一阶段的标准</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><b>第一阶段</b><br><span class="tag g">起盘验证</span></td>
+            <td>第 1–30 天</td>
+            <td>四城 24 条商品上架、封面 A/B 测试、打通咨询到成交链路</td>
+            <td>验证"哪些词有流量、哪套封面点击高、咨询能不能成交"</td>
+            <td>累计咨询 ≥ 80，成交 ≥ 10 单，点击率 ≥ 1.5%</td>
+          </tr>
+          <tr>
+            <td><b>第二阶段</b><br><span class="tag b">复制放大</span></td>
+            <td>第 31–60 天</td>
+            <td>胜出模板复制到威尼斯、马德里、佛罗伦萨、阿姆斯特丹；账号扩至 8 个</td>
+            <td>把单城模型变成可复制的产能</td>
+            <td>单号月成交 ≥ 8 单，投放 ROI ≥ 1.2</td>
+          </tr>
+          <tr>
+            <td><b>第三阶段</b><br><span class="tag y">规模化</span></td>
+            <td>第 61–90 天</td>
+            <td>覆盖申根主要城市，建立淡旺季运营节奏</td>
+            <td>形成稳定的月度成交与复购结构</td>
+            <td>月度 GMV 达成既定目标</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>1.4 这套打法的三个前提</h3>
+    <p>方案能否跑通，取决于三个前提是否成立。我们认为这三条在酒店代订品类上是成立的，并已在方案中给出验证方法。</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th style="width:34%">前提</th><th style="width:32%">方案中的应对</th><th>验证节点</th></tr></thead>
+        <tbody>
+          <tr><td>用户对"代订"有真实需求，且愿意先咨询再下单</td><td>商品定位为"查价入口"而非直接成交，全部围绕咨询设计</td><td>第 1 周看首条咨询是否出现</td></tr>
+          <tr><td>价格优势能被用户感知（不只是"3 折起"这句口号）</td><td>每个商品配具体对比话术，用真实价差说话</td><td>第 2 周看咨询后的报价通过率</td></tr>
+          <tr><td>履约稳定，能把咨询接成订单</td><td>先确认房态再收款，确认单可核验</td><td>持续，每周看成交率与差评率</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ok">
+      <b>本方案的设计原则：</b>先做小规模验证，跑通再加投入。第一阶段不追求成交量最大化，而是用最小成本拿到三组关键数据——<b>哪些城市的词有流量、哪套封面点击率高、咨询到成交的真实转化率</b>。这三组数据出来之后，第二阶段的预算投放才有依据。
+    </div>
+  </div>
+</div>
+
+<!-- ============ 02 ============ -->
+<div class="panel" id="p2">
+  <div class="card">
+    <h2><span class="n">02</span>城市选择：先打哪四个城市，为什么</h2>
+    <p class="desc">欧洲有四十多个值得做的城市，但首批资源有限。我们用六个维度给主要目的地打分，选出投入产出比最高的四个作为起盘市场。</p>
+
+    <h3>2.1 评估模型：六个维度</h3>
+    <div class="grid g3">
+      <div class="box"><h4>客源热度</h4><p>中国游客到访量与搜索热度。决定流量池大小。</p></div>
+      <div class="box"><h4>高端酒店密度</h4><p>五星及奢华品牌的门店数量。决定可代订的房源丰富度。</p></div>
+      <div class="box"><h4>客房价格水平</h4><p>平均房价。房价越高，同样的折扣率对应的价差越大，客单与毛利空间越大。</p></div>
+      <div class="box"><h4>自由行占比</h4><p>自由行客人自己订房，跟团客由旅行社统一安排。自由行比例决定代订需求的真实规模。</p></div>
+      <div class="box"><h4>申根行程协同</h4><p>是否在主流"多国联游"线路上。决定一个客人能否在你这连续下单多城。</p></div>
+      <div class="box"><h4>商品承载力</h4><p>城市酒店总量。决定能铺多少条商品而不至于内部抢词。</p></div>
+    </div>
+
+    <h3>2.2 评分结果</h3>
+    <p>六项各 5 分制，满分 30 分。评分依据为公开的旅游市场数据与平台搜索表现的综合判断，用于横向比较，不代表绝对量级。</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th style="width:16%">城市</th><th class="c">客源热度</th><th class="c">酒店密度</th><th class="c">价格水平</th><th class="c">自由行</th><th class="c">行程协同</th><th class="c">商品承载</th><th style="width:20%">综合得分</th><th class="c">梯队</th></tr></thead>
+        <tbody>
+          <tr><td><b>巴黎</b></td><td class="c">5</td><td class="c">5</td><td class="c">5</td><td class="c">5</td><td class="c">5</td><td class="c">5</td><td><span class="bar" style="width:100px"></span><b>30</b></td><td class="c"><span class="tag g">P0</span></td></tr>
+          <tr><td><b>米兰</b></td><td class="c">4</td><td class="c">4</td><td class="c">5</td><td class="c">4</td><td class="c">5</td><td class="c">4</td><td><span class="bar" style="width:87px"></span><b>26</b></td><td class="c"><span class="tag g">P0</span></td></tr>
+          <tr><td><b>巴塞罗那</b></td><td class="c">4</td><td class="c">4</td><td class="c">4</td><td class="c">5</td><td class="c">5</td><td class="c">4</td><td><span class="bar" style="width:87px"></span><b>26</b></td><td class="c"><span class="tag g">P0</span></td></tr>
+          <tr><td><b>罗马</b></td><td class="c">4</td><td class="c">4</td><td class="c">4</td><td class="c">5</td><td class="c">5</td><td class="c">4</td><td><span class="bar" style="width:87px"></span><b>26</b></td><td class="c"><span class="tag g">P0</span></td></tr>
+          <tr><td>威尼斯</td><td class="c">4</td><td class="c">3</td><td class="c">5</td><td class="c">5</td><td class="c">5</td><td class="c">2</td><td><span class="bar g" style="width:80px"></span>24</td><td class="c"><span class="tag b">P1</span></td></tr>
+          <tr><td>伦敦</td><td class="c">4</td><td class="c">5</td><td class="c">5</td><td class="c">3</td><td class="c">1</td><td class="c">5</td><td><span class="bar g" style="width:77px"></span>23</td><td class="c"><span class="tag y">P2</span></td></tr>
+          <tr><td>佛罗伦萨</td><td class="c">3</td><td class="c">3</td><td class="c">4</td><td class="c">5</td><td class="c">5</td><td class="c">3</td><td><span class="bar g" style="width:77px"></span>23</td><td class="c"><span class="tag b">P1</span></td></tr>
+          <tr><td>马德里</td><td class="c">3</td><td class="c">4</td><td class="c">3</td><td class="c">4</td><td class="c">5</td><td class="c">4</td><td><span class="bar g" style="width:77px"></span>23</td><td class="c"><span class="tag b">P1</span></td></tr>
+          <tr><td>阿姆斯特丹</td><td class="c">3</td><td class="c">3</td><td class="c">4</td><td class="c">3</td><td class="c">5</td><td class="c">4</td><td>22</td><td class="c"><span class="tag b">P1</span></td></tr>
+          <tr><td>苏黎世</td><td class="c">3</td><td class="c">3</td><td class="c">5</td><td class="c">4</td><td class="c">5</td><td class="c">2</td><td>22</td><td class="c"><span class="tag y">P2</span></td></tr>
+          <tr><td>慕尼黑</td><td class="c">3</td><td class="c">3</td><td class="c">4</td><td class="c">3</td><td class="c">5</td><td class="c">3</td><td>21</td><td class="c"><span class="tag y">P2</span></td></tr>
+          <tr><td>布拉格</td><td class="c">3</td><td class="c">2</td><td class="c">3</td><td class="c">4</td><td class="c">5</td><td class="c">3</td><td>20</td><td class="c"><span class="tag y">P2</span></td></tr>
+          <tr><td>雅典 / 圣托里尼</td><td class="c">3</td><td class="c">2</td><td class="c">4</td><td class="c">4</td><td class="c">5</td><td class="c">2</td><td>20</td><td class="c"><span class="tag y">P2</span></td></tr>
+          <tr><td>里斯本</td><td class="c">2</td><td class="c">3</td><td class="c">3</td><td class="c">3</td><td class="c">5</td><td class="c">3</td><td>19</td><td class="c"><span class="tag y">P2</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>2.3 为什么是这四个</h3>
+    <div class="grid g2">
+      <div class="box" style="border-left:3px solid var(--brand)">
+        <h4>巴黎｜唯一的满分城市</h4>
+        <p>中国游客欧洲第一站，客流最大。五星与奢华酒店密度全欧最高，柏悦、丽兹、香格里拉、瑞吉、W 都在这里有门店——<b>房源越贵，同样的折扣对应的价差越大</b>，这是客单价和毛利的来源。缺点是竞争也最激烈，需要用封面和商品数量突围。</p>
+      </div>
+      <div class="box" style="border-left:3px solid var(--brand)">
+        <h4>米兰｜购物与商务双引擎</h4>
+        <p>房价在欧洲属第一梯队，且有两个独立需求高峰：<b>购物季</b>（蒙特拿破仑大街、埃马努埃莱二世长廊）与<b>展会季</b>（家具展、时装周期间房价可翻数倍）。展会期间官网价高且一房难求，正是代订价值最大的时候。</p>
+      </div>
+      <div class="box" style="border-left:3px solid var(--brand)">
+        <h4>巴塞罗那｜自由行比例最高</h4>
+        <p>西班牙是自由行占比最高的欧洲目的地之一，代订需求真实且集中。海滨、圣家堂、格拉西亚大道三个区域各有明确客群，容易做出差异化商品，且价格带比巴黎、米兰更友好，适合做引流款。</p>
+      </div>
+      <div class="box" style="border-left:3px solid var(--brand)">
+        <h4>罗马｜景点住宿刚需最强</h4>
+        <p>古城中心酒店密集但房间数少，旺季常年满房，"住得近"本身就是刚性需求。斗兽场、西班牙广场、梵蒂冈三个核心区的搜索意图极强，做地标词的转化率会明显高于泛城市词。</p>
+      </div>
+    </div>
+    <div class="note">
+      <b>关于伦敦：</b>伦敦在酒店密度与房价两项都是满分，但英国不在申根区，需要单独签证，主流"欧洲多国联游"行程里通常不含伦敦。<b>这意味着它无法与其他城市形成连带订单</b>，所以放到第三阶段单独作为英国市场切入，不放在首批。
+    </div>
+
+    <h3>2.4 扩张节奏</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th style="width:12%">批次</th><th style="width:22%">城市</th><th style="width:34%">进入理由</th><th>预计时间</th></tr></thead>
+        <tbody>
+          <tr><td><b>P0</b></td><td>巴黎、米兰、巴塞罗那、罗马</td><td>综合得分最高的四城，覆盖法、意、西三大客源国，同属申根，可形成多城连带</td><td>第 1 个月</td></tr>
+          <tr><td><b>P1</b></td><td>威尼斯、佛罗伦萨、马德里、阿姆斯特丹</td><td>意大利深度 + 西班牙第二城；威尼斯房价极高但酒店总量小，适合做利润款而非主力</td><td>第 2 个月</td></tr>
+          <tr><td><b>P2</b></td><td>伦敦、慕尼黑、苏黎世、布拉格、雅典、里斯本</td><td>补全欧洲版图；伦敦、苏黎世单独作为高客单市场运营</td><td>第 3 个月起</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>2.5 搜索词地图</h3>
+    <p>每条商品对应一个搜索意图，避免自己跟自己抢流量。这是商品矩阵的设计依据。</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th style="width:8%">层级</th><th style="width:14%">词类型</th><th style="width:40%">示例</th><th style="width:12%">搜索量</th><th style="width:12%">竞争度</th><th>策略</th></tr></thead>
+        <tbody>
+          <tr><td><b>L1</b></td><td>国家词</td><td>法国酒店、意大利住宿、西班牙酒店代订</td><td class="num">高</td><td class="num">高</td><td>不单独打，靠城市词承接</td></tr>
+          <tr><td><b>L2</b></td><td>城市词</td><td>巴黎酒店、米兰酒店、罗马住宿、巴塞罗那酒店</td><td class="num">高</td><td class="num">中高</td><td><span class="tag r">主力</span> 每城 3–4 条</td></tr>
+          <tr><td><b>L3</b></td><td>地标词</td><td>埃菲尔铁塔附近酒店、米兰大教堂旁酒店、斗兽场步行圈、圣家堂附近住宿</td><td class="num">中</td><td class="num">低</td><td><span class="tag r">主力</span> 竞争低、转化高</td></tr>
+          <tr><td><b>L4</b></td><td>品牌词</td><td>巴黎 万豪、米兰 柏悦、罗马 洲际、巴塞罗那 凯悦</td><td class="num">中低</td><td class="num">低</td><td><span class="tag r">主力</span> 意图最精准</td></tr>
+          <tr><td><b>L5</b></td><td>场景词</td><td>巴黎自由行住宿、米兰展会酒店、罗马机场过夜、欧洲酒店代订</td><td class="num">中</td><td class="num">低</td><td><span class="tag b">补充</span> 用于测试新需求</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ok">
+      <b>铺词结构建议：</b>每城 L2 城市词 2 条、L3 地标词 2 条、L4 品牌词 1–2 条、L5 场景词 1 条，合计 6–8 条。<b>低于 5 条覆盖不足，高于 9 条会内部抢词</b>——同一批搜索结果里出现自家两条，用户会挑便宜的那条，等于自己压价。
+    </div>
+  </div>
+</div>
+
+<!-- ============ 03 ============ -->
+<div class="panel" id="p3">
+  <div class="card">
+    <h2><span class="n">03</span>账号矩阵：五个号各管一块</h2>
+    <p class="desc">为什么不是把一个号做到极致，而是同时运营五个号？三个原因：<b>平台对单个账号的曝光有天花板</b>、<b>同一账号内商品越多内部抢词越严重</b>、<b>单点风险集中</b>。多号分工是这类矩阵生意的标准结构。</p>
+
+    <h3>3.1 多号运营的三个理由</h3>
+    <div class="grid g3">
+      <div class="box"><h4>突破单号曝光天花板</h4><p>平台会给每个账号分配一个流量池。一个号即使商品再多，能拿到的总曝光也有上限。多号等于多开几个池子。</p></div>
+      <div class="box"><h4>避免内部抢词</h4><p>同一账号内两条商品打同一个词，平台只会推其中一条，另一条沉底。分散到不同账号，各自打不同的词，覆盖面积更大。</p></div>
+      <div class="box"><h4>分散经营风险</h4><p>单号遇到限流、投诉、类目审核，会直接影响全部收入。多号结构下一处出问题，其余账号照常运转。</p></div>
+    </div>
+
+    <h3>3.2 五号分工</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th style="width:7%">编号</th><th style="width:20%">账号定位</th><th style="width:8%">类型</th><th style="width:28%">主攻词域</th><th style="width:9%">商品数</th><th>核心任务</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><b>A</b></td>
+            <td><b>欧洲酒店管家</b><br><span class="tag g">主号</span></td>
+            <td>矩阵</td>
+            <td>四城的城市词 + 核心地标词</td>
+            <td class="num">8</td>
+            <td>承接主力搜索流量，是封面 A/B 测试的主阵地</td>
+          </tr>
+          <tr>
+            <td><b>B</b></td>
+            <td><b>欧游住宿特价站</b><br><span class="tag b">品牌词号</span></td>
+            <td>矩阵</td>
+            <td>四城 × 洲际系 / 凯悦系品牌词</td>
+            <td class="num">8</td>
+            <td>承接品牌精准搜索，验证品牌词转化率</td>
+          </tr>
+          <tr>
+            <td><b>C</b></td>
+            <td><b>欧洲住宿情报局</b><br><span class="tag y">场景词号</span></td>
+            <td>矩阵</td>
+            <td>购物区 / 机场 / 海滨 / 本土连锁 / 展会</td>
+            <td class="num">8</td>
+            <td>承接低竞争长尾词，做低价引流款试验</td>
+          </tr>
+          <tr>
+            <td><b>D</b></td>
+            <td><b>万豪系代订 · May</b><br><span class="tag p">专家号</span></td>
+            <td>专家</td>
+            <td>万豪系全欧聚合词、会员权益相关词</td>
+            <td class="num">3 + 1</td>
+            <td>高客单承接、复购与转介绍</td>
+          </tr>
+          <tr>
+            <td><b>E</b></td>
+            <td><b>洲际凯悦代订 · Leo</b><br><span class="tag p">专家号</span></td>
+            <td>专家</td>
+            <td>洲际 IHG / 凯悦柏悦全欧聚合词</td>
+            <td class="num">3 + 1</td>
+            <td>第二专家人设，分散风险并覆盖另一批品牌客</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <b>专家号为什么只放 3 条主商品：</b>专家号的价值在<b>深度</b>不在广度。商品太多会稀释人设，看起来又像一个铺货号。三条高客单商品 + 一条"免费查价"入口，配合完整的品牌知识输出，比八条普通链接更赚钱。<b>专家号的考核指标是客单价和复购，不是曝光量。</b>
+    </div>
+
+    <h3>3.3 账号包装：五个号要像五个不同的人</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th style="width:7%">号</th><th style="width:20%">头像与调性</th><th>个人简介（建议文案，可直接使用）</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><b>A</b></td>
+            <td>城市街景 / 真人背影<br><span class="tag">亲切 · 本地通</span></td>
+            <td>常驻欧洲，巴黎、米兰、巴塞罗那、罗马的酒店基本住遍了。手里有本地渠道价，帮不少朋友订过房。行程没定也可以先问，不订也能告诉你住哪个区更合适。</td>
+          </tr>
+          <tr>
+            <td><b>B</b></td>
+            <td>酒店大堂 / 房卡特写<br><span class="tag">专业 · 效率</span></td>
+            <td>专做欧洲酒店代订，洲际、凯悦、万豪、希尔顿全线。报给你的价就是能出的价，出不了提前说。工作时间内 10 分钟必回。</td>
+          </tr>
+          <tr>
+            <td><b>C</b></td>
+            <td>街区实拍 / 地图截图<br><span class="tag">情报 · 性价比</span></td>
+            <td>只研究"住哪儿方便"。铁塔旁边、大教堂步行圈、机场过夜、名品街旁，各有各的坑。帮你把钱花在对的位置上。</td>
+          </tr>
+          <tr>
+            <td><b>D</b></td>
+            <td>酒店 logo 墙 / 会员卡<br><span class="tag">资深 · 垂直</span></td>
+            <td>只做万豪系。从万怡到瑞吉都能订，会员权益怎么用最划算也懂。老客回头率四成以上，靠的是不忽悠、不临时加价。</td>
+          </tr>
+          <tr>
+            <td><b>E</b></td>
+            <td>酒店夜景 / 泳池<br><span class="tag">品质 · 克制</span></td>
+            <td>洲际 IHG 与凯悦系代订。柏悦、洲际、英迪格，报房态不报虚价。适合对住宿有要求、又不想按官网价付的人。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="warn">
+      <b>简介的三条禁忌：</b>①不写"官方""总代理""授权商"等资质类表述；②不写"保证有房""免费取消"等无法确认的承诺；③不直接写微信号或手机号。前者涉及虚假资质，后两者是平台明确管控的内容，会直接导致限流。引流方式见第 08 章。
+    </div>
+
+    <h3>3.4 账号隔离：五条硬规则</h3>
+    <p>多号运营最容易出的问题是"被判定为同一经营者重复铺货"。平台不只看标题，还比对图片、文案、发布环境。以下五条建议作为运营纪律执行。</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th style="width:16%">维度</th><th style="width:46%">规则</th><th>不这么做的后果</th></tr></thead>
+        <tbody>
+          <tr><td><b>标题</b></td><td>同一城市的不同号，主词必须错开。一个城市只有一个号用"XX酒店"做主词，其余用"XX住宿""XX市中心""XX+品牌"</td><td>同词同标题会被判定重复铺货</td></tr>
+          <tr><td><b>首图</b></td><td>同一类商品在不同号上，首图必须换角度或换色调，至少 30% 画面不同</td><td>完全相同的图片最容易被识别</td></tr>
+          <tr><td><b>文案</b></td><td>每个号使用不同的正文结构（本方案提供三套模板，按号分配）</td><td>文本相似度过高会拉低权重</td></tr>
+          <tr><td><b>设备网络</b></td><td>一个号对应一台设备、一条网络，不同号不共用同一 Wi-Fi 频繁切换</td><td>账号关联，一处出问题连带全部</td></tr>
+          <tr><td><b>发布节奏</b></td><td>不做批量集中发布，每号每天 1–2 条，间隔 2 小时以上</td><td>短时间大量发布触发异常行为判定</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>3.5 首月运营节奏</h3>
+    <div class="tl">
+      <div class="tl-i"><div class="d">第 1–3 天</div><h4>账号准备</h4><p>头像、昵称、简介一次设置到位，之后不再频繁修改。完成实名与基础资料。此阶段不发布商品。</p></div>
+      <div class="tl-i"><div class="d">第 4–7 天</div><h4>建立活跃度</h4><p>每天浏览目标城市的酒店内容，收藏同类商品，与同行互动。让账号形成正常的用户行为轨迹。</p></div>
+      <div class="tl-i"><div class="d">第 8–14 天</div><h4>分批上架</h4><p>每号每天上 1–2 条，先上主力城市词商品，观察曝光是否正常。此阶段同步开启封面 A/B 测试。</p></div>
+      <div class="tl-i"><div class="d">第 15–30 天</div><h4>投放与迭代</h4><p>曝光稳定的商品开始进入付费推广；零咨询商品换封面重发；跑通的模板开始向 P1 城市复制。</p></div>
+    </div>
+    <div class="ok">
+      <b>为什么前 7 天不投广告：</b>新账号还没有历史行为数据，平台的推荐逻辑对它是"试探性给量"。此时投放，预算会被分配到不确定的人群上，数据噪声大，无法判断是商品问题还是投放问题。<b>先用自然流量跑出基础数据，再决定投什么，钱花得更准。</b>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 04 ============ -->
+<div class="panel" id="p4">
+  <div class="card">
+    <h2><span class="n">04</span>商品矩阵：30 条可直接上架的链接</h2>
+    <p class="desc">下表每一条都可以直接发布。标题已控制在平台字数限制内并避开敏感表述；标价为<b>引流起价</b>，实际成交价按出行日期与房态确定。发布时按最后一列分配到对应账号。</p>
+
+    <div class="grid g4" style="margin-bottom:16px">
+      <div class="kpi"><span class="l">巴黎</span><span class="v">6</span><span class="s">PAR-01 ~ 06</span></div>
+      <div class="kpi gd"><span class="l">米兰</span><span class="v">6</span><span class="s">MIL-01 ~ 06</span></div>
+      <div class="kpi bl"><span class="l">巴塞罗那</span><span class="v">6</span><span class="s">BCN-01 ~ 06</span></div>
+      <div class="kpi pu"><span class="l">罗马</span><span class="v">6</span><span class="s">ROM-01 ~ 06</span></div>
+    </div>
+
+    <h3>4.1 巴黎 · 6 条</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th style="width:8%">编号</th><th style="width:29%">标题（可直接复制）</th><th style="width:7%">标价</th><th style="width:17%">目标搜索词</th><th style="width:14%">封面方向</th><th style="width:6%">号</th><th>第二卖点</th></tr></thead>
+        <tbody>
+          <tr><td><b>PAR-01</b></td><td>巴黎酒店3折起｜万豪系特价代订</td><td class="num">¥329</td><td>巴黎酒店 · 巴黎 万豪</td><td>酒店外立面 / 大堂</td><td class="c">A</td><td>歌剧院区与左岸店均可订</td></tr>
+          <tr><td><b>PAR-02</b></td><td>巴黎酒店3折起｜洲际系特价代订</td><td class="num">¥289</td><td>巴黎 洲际 · 巴黎 皇冠假日</td><td>客房 / 行政酒廊</td><td class="c">B</td><td>含双早房型可选</td></tr>
+          <tr><td><b>PAR-03</b></td><td>巴黎酒店3折起｜柏悦凯悦特价代订</td><td class="num">¥459</td><td>巴黎 柏悦 · 巴黎 凯悦</td><td>落地窗城景</td><td class="c">B</td><td>旺多姆广场圈，顶奢房源</td></tr>
+          <tr><td><b>PAR-04</b></td><td>埃菲尔铁塔附近酒店｜巴黎市中心代订</td><td class="num">¥389</td><td>埃菲尔铁塔附近酒店</td><td>铁塔 + 街区同框</td><td class="c">A</td><td>步行可达，省交通时间</td></tr>
+          <tr><td><b>PAR-05</b></td><td>巴黎歌剧院老佛爷酒店｜购物住宿代订</td><td class="num">¥419</td><td>巴黎老佛爷附近酒店 · 巴黎歌剧院酒店</td><td>歌剧院街景 / 商场</td><td class="c">C</td><td>购物客首选，退税点近</td></tr>
+          <tr><td><b>PAR-06</b></td><td>巴黎戴高乐机场酒店｜转机过夜代订</td><td class="num">¥249</td><td>巴黎机场酒店 · 戴高乐机场住宿</td><td>航站楼 / 接驳车</td><td class="c">C</td><td>早班机过夜，含接驳</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>4.2 米兰 · 6 条</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th style="width:8%">编号</th><th style="width:29%">标题（可直接复制）</th><th style="width:7%">标价</th><th style="width:17%">目标搜索词</th><th style="width:14%">封面方向</th><th style="width:6%">号</th><th>第二卖点</th></tr></thead>
+        <tbody>
+          <tr><td><b>MIL-01</b></td><td>米兰酒店3折起｜万豪系特价代订</td><td class="num">¥309</td><td>米兰酒店 · 米兰 万豪</td><td>酒店外立面 / 大堂</td><td class="c">A</td><td>中央车站与新门区均可订</td></tr>
+          <tr><td><b>MIL-02</b></td><td>米兰酒店3折起｜洲际系特价代订</td><td class="num">¥279</td><td>米兰 洲际 · 米兰 智选假日</td><td>客房 / 早餐台</td><td class="c">B</td><td>商务客常住，近会展</td></tr>
+          <tr><td><b>MIL-03</b></td><td>米兰酒店3折起｜柏悦凯悦特价代订</td><td class="num">¥439</td><td>米兰 柏悦 · 米兰 凯悦</td><td>艺术空间 / 顶层</td><td class="c">B</td><td>时装周期间房源紧张，建议早订</td></tr>
+          <tr><td><b>MIL-04</b></td><td>米兰大教堂步行圈酒店｜市中心代订</td><td class="num">¥359</td><td>米兰大教堂附近酒店</td><td>大教堂 + 广场</td><td class="c">A</td><td>核心区，步行逛城</td></tr>
+          <tr><td><b>MIL-05</b></td><td>米兰名品街酒店｜蒙特拿破仑大街旁</td><td class="num">¥469</td><td>米兰名品街酒店 · 蒙特拿破仑大街住宿</td><td>名品街街景 / 橱窗</td><td class="c">C</td><td>购物季房价波动大，早订差价明显</td></tr>
+          <tr><td><b>MIL-06</b></td><td>米兰展馆区酒店｜商务展会住宿代订</td><td class="num">¥399</td><td>米兰展会酒店 · 米兰新门商务住宿</td><td>办公区 / 会议空间</td><td class="c">C</td><td>展会期间官网价高，代订价差最大</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>4.3 巴塞罗那 · 6 条</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th style="width:8%">编号</th><th style="width:29%">标题（可直接复制）</th><th style="width:7%">标价</th><th style="width:17%">目标搜索词</th><th style="width:14%">封面方向</th><th style="width:6%">号</th><th>第二卖点</th></tr></thead>
+        <tbody>
+          <tr><td><b>BCN-01</b></td><td>巴塞罗那酒店3折起｜万豪系特价代订</td><td class="num">¥299</td><td>巴塞罗那酒店 · 巴塞罗那 万豪</td><td>泳池 / 大堂实景</td><td class="c">A</td><td>万豪会员权益可用</td></tr>
+          <tr><td><b>BCN-02</b></td><td>巴塞罗那酒店3折起｜洲际系特价代订</td><td class="num">¥259</td><td>巴塞罗那 洲际 · 巴塞罗那 智选</td><td>标准房实拍</td><td class="c">B</td><td>含双早房型可订</td></tr>
+          <tr><td><b>BCN-03</b></td><td>圣家堂步行圈酒店｜巴塞罗那市中心代订</td><td class="num">¥329</td><td>圣家堂附近酒店</td><td>圣家堂 + 街区</td><td class="c">A</td><td>步行 10 分钟内，免交通</td></tr>
+          <tr><td><b>BCN-04</b></td><td>巴塞罗那酒店3折起｜柏悦凯悦特价代订</td><td class="num">¥429</td><td>巴塞罗那 柏悦 · 巴塞罗那 凯悦</td><td>高空城景 / 露台</td><td class="c">B</td><td>高端房型，适合纪念日</td></tr>
+          <tr><td><b>BCN-05</b></td><td>巴塞罗那海边酒店｜巴塞罗内塔沙滩步行</td><td class="num">¥289</td><td>巴塞罗那海边酒店</td><td>海滩 + 外立面</td><td class="c">C</td><td>5 月与 9 月性价比最高</td></tr>
+          <tr><td><b>BCN-06</b></td><td>巴塞罗那NH酒店｜西班牙本土连锁特价</td><td class="num">¥199</td><td>巴塞罗那 NH 酒店</td><td>门头 / 简洁客房</td><td class="c">C</td><td>预算友好，标准化不踩雷</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>4.4 罗马 · 6 条</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th style="width:8%">编号</th><th style="width:29%">标题（可直接复制）</th><th style="width:7%">标价</th><th style="width:17%">目标搜索词</th><th style="width:14%">封面方向</th><th style="width:6%">号</th><th>第二卖点</th></tr></thead>
+        <tbody>
+          <tr><td><b>ROM-01</b></td><td>罗马酒店3折起｜万豪系特价代订</td><td class="num">¥299</td><td>罗马酒店 · 罗马 万豪</td><td>酒店外立面 / 大堂</td><td class="c">A</td><td>古城中心与高铁站店均可订</td></tr>
+          <tr><td><b>ROM-02</b></td><td>罗马酒店3折起｜洲际系特价代订</td><td class="num">¥269</td><td>罗马 洲际 · 罗马 皇冠假日</td><td>客房 / 酒廊</td><td class="c">B</td><td>含双早，适合家庭出行</td></tr>
+          <tr><td><b>ROM-03</b></td><td>罗马酒店3折起｜柏悦凯悦特价代订</td><td class="num">¥429</td><td>罗马 柏悦 · 罗马 凯悦</td><td>屋顶露台 / 城景</td><td class="c">B</td><td>西班牙广场圈，步行到名品街</td></tr>
+          <tr><td><b>ROM-04</b></td><td>斗兽场步行圈酒店｜罗马古城中心代订</td><td class="num">¥349</td><td>斗兽场附近酒店 · 罗马古城住宿</td><td>斗兽场 + 老街</td><td class="c">A</td><td>核心景点步行可达</td></tr>
+          <tr><td><b>ROM-05</b></td><td>罗马西班牙广场酒店｜名品街旁代订</td><td class="num">¥399</td><td>罗马西班牙广场酒店 · 罗马购物住宿</td><td>广场台阶 / 街景</td><td class="c">C</td><td>购物与景点双便利</td></tr>
+          <tr><td><b>ROM-06</b></td><td>罗马机场酒店｜菲乌米奇诺转机过夜</td><td class="num">¥229</td><td>罗马机场酒店 · 菲乌米奇诺住宿</td><td>机场 / 接驳</td><td class="c">C</td><td>早班机首选，省打车费</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>4.5 专家号 · 6 条品牌聚合型</h3>
+    <p>专家号不与矩阵号抢城市词，改为打"品牌 + 全欧"的聚合词，覆盖的是另一批搜索意图更明确的用户。</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th style="width:8%">编号</th><th style="width:32%">标题</th><th style="width:7%">标价</th><th style="width:20%">目标搜索词</th><th style="width:6%">号</th><th>定位</th></tr></thead>
+        <tbody>
+          <tr><td><b>EXP-D1</b></td><td>万豪系酒店代订｜欧洲四城特价</td><td class="num">¥399</td><td>万豪酒店代订 · 欧洲万豪</td><td class="c">D</td><td>专家号主链接，覆盖四城万豪</td></tr>
+          <tr><td><b>EXP-D2</b></td><td>万豪旅享家｜欧洲酒店代订 会员权益可用</td><td class="num">¥459</td><td>万豪旅享家 代订</td><td class="c">D</td><td>面向会员客群，客单更高</td></tr>
+          <tr><td><b>EXP-D3</b></td><td>瑞吉W威斯汀代订｜欧洲奢华酒店特价</td><td class="num">¥899</td><td>欧洲奢华酒店代订</td><td class="c">D</td><td>利润款，接高预算客</td></tr>
+          <tr><td><b>EXP-E1</b></td><td>洲际IHG酒店代订｜欧洲全线含双早房型</td><td class="num">¥379</td><td>洲际酒店代订 · IHG 代订</td><td class="c">E</td><td>第二专家号主力</td></tr>
+          <tr><td><b>EXP-E2</b></td><td>柏悦凯悦代订｜欧洲奢华酒店房态优选</td><td class="num">¥499</td><td>柏悦酒店代订 · 凯悦代订</td><td class="c">E</td><td>与 D 号奢华线错位</td></tr>
+          <tr><td><b>EXP-E3</b></td><td>英迪格VOCO代订｜欧洲设计酒店特价</td><td class="num">¥329</td><td>英迪格酒店 · 欧洲设计酒店</td><td class="c">E</td><td>差异化小众，竞争低</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <b>另配两条查价入口：</b>D、E 号各加一条 <code>免费查价｜欧洲酒店代订 报价咨询</code>，标价 ¥1。作用不是成交，而是给"还没定行程"的用户一个低成本开口的理由——这类用户占比不低，直接推商品他们会犹豫，但"免费查个价"接受度高，之后仍可能成交。
+    </div>
+
+    <h3>4.6 价格带设计</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th style="width:14%">层级</th><th style="width:16%">标价区间</th><th style="width:30%">对应商品</th><th style="width:22%">作用</th><th>转化重点</th></tr></thead>
+        <tbody>
+          <tr><td><b>引流款</b></td><td class="num">¥199 – ¥269</td><td>BCN-02/06、ROM-02/06、PAR-02/06</td><td>降低点击门槛，抢价格敏感用户</td><td>先给房型图，再谈价</td></tr>
+          <tr><td><b>主力款</b></td><td class="num">¥279 – ¥399</td><td>PAR-01/04、MIL-01/04、BCN-01/03/05、ROM-01/04/05</td><td>贡献主要咨询与成交</td><td>官网价对比，讲清价差</td></tr>
+          <tr><td><b>利润款</b></td><td class="num">¥419 – ¥899</td><td>PAR-03/05、MIL-03/05/06、BCN-04、ROM-03、EXP-D3/E2</td><td>拉高客单，做口碑与复购</td><td>强调房型与服务，不拼价格</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="warn">
+      <b>标价的合规处理（重要）：</b>平台展示价为"起价"，必须让用户明确知道这不是最终成交价。三个动作缺一不可：①标题或首图带"起"字；②详情页第一行写明"标价为起价，实际按出行日期与房态报价"；③咨询首句主动说明"我先确认您的日期，再给准确价格"。<b>未做这三步，容易因"实际价格与标价不符"被判违规，或收到差评。</b>
+    </div>
+
+    <h3>4.7 标题模板：扩城时直接套用</h3>
+    <p>五套模板，替换城市、品牌、地标即可生成新商品。矩阵要能规模化，靠的是公式而不是每次重新创作。</p>
+    <div class="code">
+      <div class="code-h"><span>标题模板 × 5（新增城市通用）</span><button class="cp">复制</button></div>
+      <pre><b>模板 1｜城市 + 折扣 + 多品牌组（主力款）</b>
+{城市}酒店3折起｜{品牌A}{品牌B}特价代订
+例：威尼斯酒店3折起｜万豪希尔顿特价代订
+
+<b>模板 2｜城市 + 折扣 + 单集团（品牌款）</b>
+{城市}酒店3折起｜{品牌}系特价代订
+例：马德里酒店3折起｜洲际系特价代订
+
+<b>模板 3｜地标 + 酒店 + 场景（长尾款）</b>
+{地标}附近酒店｜{城市}{区域}代订
+例：圣马可广场附近酒店｜威尼斯主岛住宿代订
+
+<b>模板 4｜场景 + 权益（转化款）</b>
+{城市}{场景}酒店｜{权益}代订
+例：米兰展会酒店｜商务住宿连住优惠
+
+<b>模板 5｜交通节点（刚需款）</b>
+{城市}机场酒店｜{航站楼}转机过夜
+
+<i>使用规则：</i>
+· 城市名放在标题前 6 个字内（搜索权重偏向前段）
+· 一条商品只出现一个城市，不做城市堆叠
+· 品牌最多写三个，超过三个反而显得不专业
+· 全文控制在 30 字以内，避免被截断
+· 同一城市内，不同商品的标题里不要重复同一个核心词</pre>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 05 ============ -->
+<div class="panel" id="p5">
+  <div class="card">
+    <h2><span class="n">05</span>内容与封面：决定点击率的那一秒</h2>
+    <p class="desc">用户在搜索结果里滑过一条商品，只有一秒做判断。这一秒他看两件事：<b>图够不够吸引</b>、<b>价格像不像真的</b>。文案是点进来之后才起作用的事。</p>
+
+    <h3>5.1 两套封面方案，同步测试</h3>
+    <div class="grid g2">
+      <div class="box" style="border-left:3px solid var(--brand)">
+        <h4>方案 A｜内容质感型</h4>
+        <ul>
+          <li><b>画面</b>：酒店实景或城市地标占 70% 以上，自然光、暖色调</li>
+          <li><b>文字</b>：左上角白色小字两行，总面积不超过画面 20%</li>
+          <li><b>主标</b>：<code>巴黎｜住进了对得起价格的酒店</code></li>
+          <li><b>副标</b>：<code>万豪 · 洲际 · 柏悦</code></li>
+          <li><b>角标</b>：右下小字 <code>3折起·部分房型</code></li>
+          <li><b>逻辑</b>：先用审美建立信任，再谈价格</li>
+        </ul>
+      </div>
+      <div class="box" style="border-left:3px solid var(--gold)">
+        <h4>方案 B｜利益点直给型</h4>
+        <ul>
+          <li><b>画面</b>：酒店图压暗 30% 作底，文字占据主体</li>
+          <li><b>文字</b>：主标占画面 40%，强对比色块衬底</li>
+          <li><b>主标</b>：<code>3折起</code>（字号最大）</li>
+          <li><b>中字</b>：<code>欧洲酒店代订</code></li>
+          <li><b>底条</b>：<code>万豪｜洲际｜柏悦｜凯悦｜NH</code></li>
+          <li><b>逻辑</b>：价格冲击直接筛选意向，转化更硬</li>
+        </ul>
+      </div>
+    </div>
+    <div class="info">
+      <b>为什么要两套一起跑：</b>这两套打法对应两种流量场景。搜索进来的用户意图明确，B 方案的价格钩子更有效；推荐流刷到的用户没有明确需求，A 方案的画面更能留住人。<b>凭感觉选一套，很可能选错。用两周的数据决定，成本只有几张图。</b>
+    </div>
+
+    <h3>5.2 封面设计规范</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th style="width:16%">规范项</th><th style="width:46%">要求</th><th>原因</th></tr></thead>
+        <tbody>
+          <tr><td><b>尺寸</b></td><td>800×800 像素（1:1），核心信息放在中心 720×720 安全区内</td><td>平台首图会裁切边缘</td></tr>
+          <tr><td><b>文字占比</b></td><td>A 方案 ≤20%，B 方案 ≤45%</td><td>文字过多会被判定为纯文字图，影响推荐</td></tr>
+          <tr><td><b>色系</b></td><td>每城固定一个主色（巴黎藏蓝 / 米兰酒红 / 巴塞罗那暖橙 / 罗马砖红），同城商品保持统一</td><td>形成系列感，用户连刷三条会记住你</td></tr>
+          <tr><td><b>张数</b></td><td>每条商品 5–6 张：封面 + 房型 2 张 + 公区 1 张 + 位置图 1 张 + 价格对比 1 张</td><td>详情页图片充足，咨询转化明显更高</td></tr>
+          <tr><td><b>禁止项</b></td><td>不使用酒店官方宣传图、不放二维码或联系方式、不使用"最""第一"等绝对化表述、不伪造价格截图</td><td>涉及版权、引流管控与虚假宣传三类风险</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ok">
+      <b>系列感比单张精美更重要：</b>同一个号下的 8 条商品，用同一套排版模板、同一字体、同一色系，只在主标和主图上变化。用户搜"巴黎酒店"时连续看到三张同款排版的图，会自然形成"这家是专业做这个的"判断——<b>这是矩阵号能拿到的隐性信任红利，成本几乎为零。</b>
+    </div>
+
+    <h3>5.3 正文三套模板（按号分配，避免雷同）</h3>
+    <p>平台正文不支持表情符号，纯文字排版。三套结构完全不同，分别给 A、B、C 三个号使用，既能避免内容判重，也便于测试哪种结构转化更好。</p>
+
+    <div class="code">
+      <div class="code-h"><span>模板 1 · 体验型（分配 A 号）</span><button class="cp">复制</button></div>
+      <pre>在巴黎住了几年，被问最多的一句话是：这酒店值不值这个价。
+
+先说个反常识的：大部分人来巴黎，钱都花错了地方。
+贵的不一定位置好，位置好的不一定贵。
+
+我现在主要帮人订这几类：
+
+一是铁塔、歌剧院这些核心区。走路能到景点，省下每天的打车钱和时间，
+算下来比住郊区划算。
+二是左岸那一片。安静，离奥赛和卢浮宫近，价格比右岸低一档。
+三是机场附近过渡一晚。早班机的话，住市区反而是折腾。
+
+价格方面我不玩虚的。标价是起价，具体要看你哪几天、几个人、什么房型。
+你把日期发我，我去查房态，能出就报实价，出不了直接说，不耽误你时间。
+
+几个说明：
+· 房是通过合作渠道出的，不是我自家酒店，介意的话提前问清楚
+· 部分日期和房型才有特价，不是天天都这个价
+· 订之前我会把取消规则讲清楚，你确认了再付
+
+不确定住哪个区也可以先问，不订我也会告诉你哪片方便。</pre>
+    </div>
+
+    <div class="code">
+      <div class="code-h"><span>模板 2 · 清单型（分配 B 号）</span><button class="cp">复制</button></div>
+      <pre>欧洲酒店代订，把常见问题一次说清。
+
+【能订哪些】
+万豪系：万豪、W、瑞吉、威斯汀、艾美、喜来登
+洲际系：洲际、皇冠假日、智选假日、英迪格
+凯悦系：柏悦、凯悦、凯悦嘉轩
+其他：希尔顿、NH、美利亚
+
+【覆盖城市】
+巴黎、米兰、巴塞罗那、罗马，其余城市陆续开通。
+
+【价格怎么算】
+标价是起价，不是最终价。
+实际价格 = 出行日期 + 房型 + 住几晚，三个变量。
+旺季节假日会高，淡季连住会低。日期给我，我报准数。
+
+【为什么比官网低】
+渠道价 + 尾房 + 连住政策，不是所有日期都有。
+所以你问我某一天，我可能回答"这天没有"，这很正常。
+
+【怎么保证不出问题】
+1. 报价前先确认房态，不确认不收款
+2. 下单后给确认单，可自行到店核对
+3. 出不了房全额退，这条会写进聊天记录
+4. 取消规则提前说明，不同房型不一样
+
+【多久能确认】
+工作时间内一般 30 分钟，夜间次日早上。
+急单直接说日期，我先查。
+
+标价仅为起价参考，实际以房态报价为准。</pre>
+    </div>
+
+    <div class="code">
+      <div class="code-h"><span>模板 3 · 场景型（分配 C 号）</span><button class="cp">复制</button></div>
+      <pre>米兰住哪儿，其实取决于你干嘛来了。
+
+【第一次来，看教堂和逛街】
+住大教堂广场周边。
+步行能到大教堂、埃马努埃莱二世长廊和斯卡拉歌剧院，
+缺点是游客多、房价全市最贵的一档。
+
+【主要为购物】
+蒙特拿破仑大街两侧。
+名品街就在楼下，退税点也近，省下的脚力值这个价。
+
+【看展 / 出差】
+新门区和展馆周边。
+米兰家具展、时装周期间，这一带房价能翻倍且一房难求，
+提前订和临时订差价非常大。
+
+【只待一晚 / 早班机】
+中央车站或机场沿线。
+进城 30 分钟，房价便宜一半，适合第二天就走的人。
+
+【预算有限但要干净】
+NH、宜必思这些连锁。标准化，不惊喜也不踩雷。
+
+我这边主要做上面这些区域的代订，标价是起价，具体看日期和房型。
+不确定选哪片，把行程发我，我按你的动线推荐。</pre>
+    </div>
+
+    <div class="note">
+      <b>三套模板的差别不在文笔，在结构：</b>①体验型立"人"，解决"你凭什么懂"；②清单型立"信息量"，一次答完常见问题，减少来回；③场景型立"顾问感"，帮用户做决策。<b>跑两周后看哪套的"点击到咨询"转化最高，就把那套结构复制到其他城市。</b>
+    </div>
+
+    <h3>5.4 内容迭代节奏</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th style="width:14%">周期</th><th style="width:34%">动作</th><th>判断标准</th></tr></thead>
+        <tbody>
+          <tr><td><b>每日</b></td><td>每号新增或替换 1 条商品</td><td>维持账号活跃度，持续测试新词</td></tr>
+          <tr><td><b>每 3 天</b></td><td>曝光低于同号均值一半的商品，换封面重发</td><td>曝光低说明词没被索引或封面不行</td></tr>
+          <tr><td><b>每 7 天</b></td><td>零咨询商品下架；点击率最高的封面风格定为标准模板</td><td>7 天是平台给新商品的完整流量周期</td></tr>
+          <tr><td><b>每 14 天</b></td><td>胜出模板复制到 P1 城市</td><td>同模板跨城复用，边际成本最低</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 06 ============ -->
+<div class="panel" id="p6">
+  <div class="card">
+    <h2><span class="n">06</span>投放策略：付费推广怎么花才有效</h2>
+    <p class="desc">先说结论：<b>在这个品类，付费推广的作用是"加速"，不是"驱动"。</b>靠投放把一条没人点的商品推爆是不现实的；但如果商品本身能转化，投放能让它快十倍跑出结果。</p>
+
+    <h3>6.1 平台工具的真实能力边界</h3>
+    <p>闲鱼的付费推广工具「超级擦亮」没有人群定向、没有地域勾选、没有兴趣标签。能调的只有四项：</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th style="width:16%">可调项</th><th style="width:38%">可选值</th><th style="width:16%">建议选择</th><th>理由</th></tr></thead>
+        <tbody>
+          <tr><td><b>推广目标</b></td><td>曝光量 / 浏览量 / 关注收藏量 / <b>咨询量</b> / 订单量</td><td><span class="tag g">咨询量</span></td><td>酒店代订客单价高，用户必然先沟通。直接优化咨询，比优化曝光更接近成交</td></tr>
+          <tr><td><b>计划类型</b></td><td>套餐擦亮 / <b>自定义擦亮</b></td><td><span class="tag g">自定义</span></td><td>套餐模式无法指定目标与出价，等于盲投</td></tr>
+          <tr><td><b>出价方式</b></td><td><b>控成本投放</b> / 快速起量</td><td><span class="tag g">控成本</span></td><td>快速起量会在短时间内烧完预算，不适合需要精细核算的品类</td></tr>
+          <tr><td><b>日预算上限</b></td><td>¥50 / ¥150 / 自定义</td><td><span class="tag y">从 ¥50 起</span></td><td>先用最低档验证商品，跑通再提</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ok">
+      <b>一个关键推论：既然平台不能定向，那"定向"就要由商品自己完成。</b>一条标题为"巴黎酒店3折起｜万豪系特价代订"的商品，天然只会被搜索"巴黎酒店""巴黎 万豪"的人看到——<b>标题就是定向，词就是人群。</b>这也解释了为什么本方案把主要精力放在铺词上：词铺错了，出价再精细也是浪费预算。
+    </div>
+
+    <h3>6.2 先算账：什么客单价才值得投付费</h3>
+    <p>酒店代订能不能靠付费推广赚钱，<b>几乎完全取决于客单价，而不是点击成本</b>。下表按不同客单价测算（毛利率按行业常见水平估算，可对照实际数据取用）：</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th>客单价</th><th>毛利率</th><th>单均毛利</th><th>咨询到成交</th><th>单个咨询价值</th><th>可承受咨询成本</th><th>结论</th></tr></thead>
+        <tbody>
+          <tr><td class="num">¥800</td><td class="num">12%</td><td class="num">¥96</td><td class="num">12%</td><td class="num">¥11.5</td><td class="num">≤ ¥11</td><td><span class="tag r">不适合投付费</span> 只能靠自然流量</td></tr>
+          <tr><td class="num">¥1,500</td><td class="num">12%</td><td class="num">¥180</td><td class="num">12%</td><td class="num">¥21.6</td><td class="num">≤ ¥21</td><td><span class="tag y">空间很窄</span> 出价必须压到极低</td></tr>
+          <tr><td class="num">¥3,000</td><td class="num">12%</td><td class="num">¥360</td><td class="num">12%</td><td class="num">¥43</td><td class="num">≤ ¥43</td><td><span class="tag b">可以投</span> 需要精细控制</td></tr>
+          <tr><td class="num">¥5,000</td><td class="num">15%</td><td class="num">¥750</td><td class="num">12%</td><td class="num">¥90</td><td class="num">≤ ¥90</td><td><span class="tag g">健康</span> 可以放量</td></tr>
+          <tr><td class="num">¥8,000</td><td class="num">15%</td><td class="num">¥1,200</td><td class="num">12%</td><td class="num">¥144</td><td class="num">≤ ¥140</td><td><span class="tag g">优质</span> 重点投入</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="warn">
+      <b>这张表直接决定了一条投放纪律：</b>低价引流款（¥199–¥269 的单晚经济型或本土连锁）<b>只用于自然流量拉曝光，不投付费</b>。按上表测算，这类商品单咨询价值只有约 ¥11，而欧洲酒店代订的咨询成本通常在 ¥30–60 之间，每投一单亏 ¥20–50。<br><br>
+      <b>付费预算应全部集中在客单价 ¥3,000 以上的商品上</b>——连住多晚、五星、套房、展会期间房源。同样的预算，投对商品的 ROI 可以差出三到五倍。
+    </div>
+    <div class="info">
+      <b>由此得出的投放优先级：</b><br>
+      EXP-D3（瑞吉 / W / 威斯汀，¥899 起）＞ EXP-E2（柏悦凯悦，¥499 起）＞ PAR-03 / MIL-03 / ROM-03 / BCN-04（柏悦凯悦单城款）＞ MIL-05（名品街，¥469）＞ PAR-05（歌剧院购物，¥419）＞ MIL-06（展会，¥399）＞ 其余主力款。<br>
+      <b>引流款一律不投。</b>
+    </div>
+
+    <h3>6.3 预算测算：从目标倒推</h3>
+    <p>以"月成交 30 单、客单价 ¥1,500、月 GMV ¥4.5 万"为例演示测算过程。实际执行时替换为既定目标即可：</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th style="width:24%">测算步骤</th><th style="width:22%">计算方式</th><th style="width:16%">结果</th><th>说明</th></tr></thead>
+        <tbody>
+          <tr><td>月成交目标</td><td>既定目标</td><td class="num">30 单</td><td>—</td></tr>
+          <tr><td>所需咨询量</td><td>30 ÷ 12%</td><td class="num">250 个</td><td>咨询到成交按 12% 保守估算</td></tr>
+          <tr><td>所需点击量</td><td>250 ÷ 6%</td><td class="num">4,167 次</td><td>点击到咨询按 6% 估算</td></tr>
+          <tr><td>自然流量可承担</td><td>按 50% 计</td><td class="num">2,084 次</td><td>30 条商品正常运营可贡献的量</td></tr>
+          <tr><td>需付费补充</td><td>4,167 − 2,084</td><td class="num">2,083 次</td><td>—</td></tr>
+          <tr><td>月付费预算</td><td>2,083 × ¥3.5</td><td class="num">¥7,290</td><td>单次点击成本按 ¥3.5 估算</td></tr>
+          <tr class="sum"><td>折算单号日预算</td><td>¥7,290 ÷ 5 ÷ 30</td><td class="num">≈ ¥49 / 天</td><td><b>五号合计约 ¥250 / 天</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ok">
+      <b>这个测算的实用价值：</b>它说明"每号每天 ¥50"不是保守估计，而是<b>完成 30 单目标的最小必要预算</b>。如果目标提到 60 单，预算需要翻倍，或者把自然流量占比提高到 70%（依靠更多商品与更多账号）。<b>目标和预算必须一起定，单方面承诺是做不到的。</b>
+    </div>
+    <div class="note">
+      <b>如果预算有限，优先顺序是：</b>①先把 30 条商品铺满并跑出自然流量（这是基本盘，不花钱）→ ②只投 2 条最高客单的专家号商品测试水温和成本 → ③数据证明能打平后再逐步加号加预算。<b>不要一上来就五个号全开，那是在没摸清水深之前就跳下去。</b>
+    </div>
+
+    <h3>6.4 三阶段投放节奏</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th style="width:11%">阶段</th><th style="width:10%">时间</th><th style="width:20%">投哪些</th><th style="width:12%">单号日预算</th><th style="width:25%">操作要点</th><th>调整依据</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><b>第一阶段</b><br>测词</td><td>第 8–14 天</td>
+            <td>A 号与 B 号各挑 2 条主力款，共 4 条计划</td>
+            <td class="num">¥50</td>
+            <td>一条商品一个计划，方便单独关闭；控成本投放，初始出价按系统建议值下调 20%</td>
+            <td>7 天内产生 ≥2 个咨询则进入下一阶段；0 咨询则换封面重开</td>
+          </tr>
+          <tr>
+            <td><b>第二阶段</b><br>放量</td><td>第 15–30 天</td>
+            <td>跑通的计划加预算，开启专家号利润款</td>
+            <td class="num">¥80–150</td>
+            <td>每次加预算幅度不超过 30%，加完观察 48 小时再动</td>
+            <td>咨询成本 ≤ 单咨询价值的 80% 则继续加；超过 120% 则降出价</td>
+          </tr>
+          <tr>
+            <td><b>第三阶段</b><br>收割</td><td>第 31 天起</td>
+            <td>只保留 ROI 为正的 3–5 条计划</td>
+            <td class="num">按 ROI 分配</td>
+            <td>关闭"有咨询无成交"的计划，预算集中到真正出单的商品</td>
+            <td>整体 ROI ≥1.2 继续；否则退回纯自然流量运营</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>6.5 每日操作清单</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th style="width:12%">时间</th><th style="width:26%">看什么</th><th style="width:28%">怎么判断</th><th>怎么调整</th></tr></thead>
+        <tbody>
+          <tr><td><b>09:30</b></td><td>昨日花费、曝光、点击、咨询</td><td>预算是否跑满？咨询是否为 0？</td><td>跑满且无咨询，降出价 10%；没跑满则不动</td></tr>
+          <tr><td><b>13:00</b></td><td>上午的点击成本与咨询成本</td><td>点击成本超预估 30% 以上</td><td>降出价 10%–15%，不要一次降太多</td></tr>
+          <tr><td><b>17:30</b></td><td>预算余额</td><td>晚间高峰（20:00–23:00）前是否够用</td><td>不够则提预算一档，或降出价延长投放时长</td></tr>
+          <tr><td><b>21:00</b></td><td>在线状态与咨询响应</td><td>这是平台流量最高的时段</td><td>确保有人值守，5 分钟内回复</td></tr>
+          <tr><td><b>次日 10:00</b></td><td>前一日完整漏斗数据</td><td>点击率、咨询率、咨询成本对比前三天均值</td><td>单项偏差超 30% 才调整，否则保持稳定</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <b>调价纪律：</b>一天最多调整一次，单次幅度不超过 15%。频繁小幅调整会让系统反复重新学习，数据反而跑不稳。<b>投放最怕的不是出价不准，是每天都在改。</b>
+    </div>
+
+    <h3>6.6 什么情况应当立即停止投放</h3>
+    <ul class="chk">
+      <li><span class="bx"></span>单计划连续 3 天零咨询，且累计花费超过 ¥80 → 停止，换封面或换商品重开</li>
+      <li><span class="bx"></span>咨询成本高于单咨询价值 1.5 倍且持续 3 天 → 停止，说明该词的竞价超出承受范围</li>
+      <li><span class="bx"></span>有咨询但零成交，且连续 5 个咨询都因价格流失 → 停止，这是报价竞争力问题，加预算无效</li>
+      <li><span class="bx"></span>商品出现"风险商品"提示或账号被限流 → 立即停止，先处理合规问题</li>
+      <li><span class="bx"></span>履约侧接不住（房态不足、确认超时）→ 停止，投出去接不住等于批量制造差评</li>
+    </ul>
+    <div class="warn">
+      <b>最后一条最容易被忽略，但代价最大：</b>酒店代订"接不住"的后果与普通商品完全不同——用户已经付了钱，到店却没有房。这不仅是差评，还可能涉及消费纠纷。<b>放量之前必须先确认履约端能承接的量级</b>，宁可少赚，不要爆单。
+    </div>
+  </div>
+</div>
+
+<!-- ============ 07 ============ -->
+<div class="panel" id="p7">
+  <div class="card">
+    <h2><span class="n">07</span>数据优化：钱漏在哪一层，就修哪一层</h2>
+    <p class="desc">投放不是看"一共花了多少钱"，而是看<b>钱在哪一层漏掉了</b>。五层漏斗，每一层对应不同的修法。方向错了，越努力越亏。</p>
+
+    <h3>7.1 五层漏斗与目标值</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th style="width:8%">层级</th><th style="width:16%">指标</th><th style="width:16%">计算方式</th><th style="width:12%">首月目标</th><th style="width:14%">参考区间</th><th>低于区间说明什么</th></tr></thead>
+        <tbody>
+          <tr><td><b>L1</b></td><td>曝光量</td><td>商品被展示的次数</td><td class="num">≥ 30,000</td><td class="num">—</td><td>词没被索引、账号权重低、或未开启推广</td></tr>
+          <tr><td><b>L2</b></td><td>点击率</td><td>点击 ÷ 曝光</td><td class="num">≥ 2.0%</td><td class="num">1.5%–4%</td><td><b>封面吸引力不足</b>，或价格锚点不突出</td></tr>
+          <tr><td><b>L3</b></td><td>点击到咨询率</td><td>咨询人数 ÷ 点击数</td><td class="num">≥ 5%</td><td class="num">4%–8%</td><td><b>详情页没把话说清</b>：能订什么、多少钱、靠不靠谱</td></tr>
+          <tr><td><b>L4</b></td><td>咨询到加微率</td><td>加上微信 ÷ 咨询人数</td><td class="num">≥ 45%</td><td class="num">40%–60%</td><td>首次响应慢、报价不专业，或用户只是随口一问</td></tr>
+          <tr><td><b>L5</b></td><td>加微到成交率</td><td>成交单数 ÷ 加微人数</td><td class="num">≥ 18%</td><td class="num">15%–30%</td><td><b>价格缺乏竞争力</b>，或不敢给履约确定性</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <b>统计口径必须先统一，否则数据没法比较：</b>①"咨询"指发过消息的<b>独立用户数</b>，不是消息条数；②"加微"指<b>通过好友验证</b>，不是"发了号码"；③"成交"指<b>付款成功</b>，不是口头确认。这三条不统一，每天的报表对不上，复盘就变成各说各话。
+    </div>
+
+    <h3>7.2 三层诊断：按顺序查，不要跳步</h3>
+    <div class="grid g3">
+      <div class="box" style="border-top:3px solid var(--red)">
+        <h4>① 点击率低于 1.5%</h4>
+        <ul>
+          <li>先换封面，这是成本最低、见效最快的动作</li>
+          <li>标题前六个字补上城市名</li>
+          <li>价格锚点缩小字号但保持可见</li>
+          <li>同词换一条商品重发，测第二轮</li>
+        </ul>
+        <p style="margin-top:8px"><b>不要</b>先加出价。曝光够但没人点，加价只会亏得更多。</p>
+      </div>
+      <div class="box" style="border-top:3px solid var(--gold)">
+        <h4>② 咨询率低于 4%</h4>
+        <ul>
+          <li>详情页首屏有没有回答三个问题：能订什么、多少钱、怎么保证</li>
+          <li>图片是否少于 5 张</li>
+          <li>标价与"3 折起"的落差是否过大，让用户觉得被误导</li>
+          <li>有没有说明履约方式与退款规则</li>
+        </ul>
+        <p style="margin-top:8px"><b>这一环最容易断</b>：有点击没咨询，说明用户看完就走了。</p>
+      </div>
+      <div class="box" style="border-top:3px solid var(--blue)">
+        <h4>③ 成交率低于 15%</h4>
+        <ul>
+          <li>报价高于用户当场比到的其他渠道</li>
+          <li>不敢给确定性：几点确认、出不了怎么办</li>
+          <li>响应慢，用户已经问过三四家</li>
+          <li>没有说明房态紧张，缺少决策紧迫感</li>
+        </ul>
+        <p style="margin-top:8px"><b>这是商务问题</b>，不是投放问题，加预算无效。</p>
+      </div>
+    </div>
+
+    <h3>7.3 日报模板（可直接复制使用）</h3>
+    <div class="code">
+      <div class="code-h"><span>运营日报 · 每日 10:00 前填写昨日数据</span><button class="cp">复制</button></div>
+      <pre>【日期】2026-__-__
+
+■ 分账号
+账号          花费    曝光     点击   点击率  咨询  咨询成本  加微  成交
+A 欧洲酒店管家 ___    ___      ___    __%     ___   ___       ___   ___
+B 欧游特价站   ___    ___      ___    __%     ___   ___       ___   ___
+C 住宿情报局   ___    ___      ___    __%     ___   ___       ___   ___
+D 万豪 May     ___    ___      ___    __%     ___   ___       ___   ___
+E 洲际 Leo     ___    ___      ___    __%     ___   ___       ___   ___
+合计           ___    ___      ___    __%     ___   ___       ___   ___
+
+■ 分商品（只列有花费的）
+编号     花费    点击    咨询   咨询成本   成交   备注
+______   ___     ___     ___    ___        ___   ___
+
+■ 今日判断（三选一）
+□ 正常，保持现状
+□ 出现异常：____________，动作：____________
+□ 需要停投：____________，原因：____________
+
+■ 明日动作（不超过三条）
+1.
+2.
+3.</pre>
+    </div>
+
+    <h3>7.4 复盘节点</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th style="width:12%">节点</th><th style="width:34%">看什么</th><th>输出物</th></tr></thead>
+        <tbody>
+          <tr><td><b>第 3 天</b></td><td>账号是否能正常出曝光（非零即可）</td><td>口头结论，不需要文档</td></tr>
+          <tr><td><b>第 7 天</b></td><td>两套封面的点击率对比、首批咨询是否出现</td><td>封面结论 + 是否进入投放阶段</td></tr>
+          <tr><td><b>第 14 天</b></td><td>五层漏斗完整数据、单商品排名</td><td>《双周复盘》：保留 / 修改 / 下架 三张清单</td></tr>
+          <tr><td><b>第 30 天</b></td><td>GMV、投放 ROI、单号产能、可复制模板</td><td>《月度复盘 + 下阶段扩张方案》</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ok">
+      <b>复盘要盯的其实只有三个数：</b>点击率（封面好不好）、咨询率（详情页行不行）、成交率（价格与履约有没有竞争力）。<b>其余指标都是这三个的衍生结果。</b>每次复盘只解决最差的那一层，不要同时改五件事——那样改了也说不清是谁的功劳。
+    </div>
+  </div>
+</div>
+
+<!-- ============ 08 ============ -->
+<div class="panel" id="p8">
+  <div class="card">
+    <h2><span class="n">08</span>咨询转化：从"在吗"到成交</h2>
+    <p class="desc">投放负责把用户带到门口，承接决定他进不进来。酒店代订的用户只有三个真实顾虑：<b>会不会被骗、会不会临时加价、出问题怎么办</b>。话术的作用就是逐条拆掉这三堵墙。</p>
+
+    <h3>8.1 首次响应：5 分钟内，不超过三句</h3>
+    <div class="code">
+      <div class="code-h"><span>首次响应模板（按场景选用）</span><button class="cp">复制</button></div>
+      <pre><b>场景 1｜用户只发了"在吗"</b>
+在的。您把入住和退房日期、几个人、想住哪个区发我，我现在就能查房态。
+
+<b>场景 2｜用户直接问"多少钱"</b>
+价格跟日期和房型关系很大，同一家酒店不同日子能差一倍。
+您告诉我具体哪几天，我查完给准数，不报虚价。
+
+<b>场景 3｜用户已经发了日期</b>
+收到，我查一下。大概 10 分钟给您回，能出我报实价，出不了直接说，不耽误您。
+
+<b>场景 4｜用户问"是不是真的"</b>
+理解您的顾虑。先说清楚：房是通过合作渠道出的，不是我自己的酒店。
+订之前我会把确认单给您看，您也可以自己打电话到酒店核对。
+出不了房全额退，这条可以写在聊天记录里。</pre>
+    </div>
+    <div class="ok">
+      <b>首次响应的三个原则：</b>①<b>不要秒回价格</b>——先说"我查一下"，反而显得真实；②<b>必须索要具体信息</b>——日期、人数、区域，问得越细，用户越觉得你专业；③<b>主动说"出不了我会直说"</b>——这句看起来在赶客，实际是最有效的信任建立方式。
+    </div>
+
+    <h3>8.2 报价话术：三段式</h3>
+    <div class="code">
+      <div class="code-h"><span>报价三段式（对比 → 限制 → 确定性）</span><button class="cp">复制</button></div>
+      <pre><b>第一段｜给对比，建立价格锚点</b>
+这家 10 月 24 号到 27 号，官网含税大约 1,860 一晚，我这边能到 1,120，
+三晚下来差 2,200 左右。房型一样，豪华大床，含双早。
+
+<b>第二段｜说清限制，降低预期</b>
+有两点先说清楚：
+一是这个价是提前预付，下单后不能改期；
+二是取消政策为入住前 7 天可退 50%，7 天内不退。
+您能接受我再往下走。
+
+<b>第三段｜给确定性，消除最后顾虑</b>
+确认的话我现在就锁房，一般 30 分钟内出确认单，您收到确认单再付款也行。
+出不了我第一时间告诉您，全额退。</pre>
+    </div>
+
+    <h3>8.3 四类常见异议的应对</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th style="width:16%">用户说</th><th style="width:20%">他真正担心</th><th style="width:42%">建议回复</th><th>避免的说法</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><b>"这么便宜是不是骗子"</b></td>
+            <td>付了钱拿不到房</td>
+            <td>您这个担心很正常。我不让您先付全款：先锁房，出确认单您核对没问题再付。确认单上有订单号，可以直接打酒店前台问。做不到这一步，我这生意也做不下去。</td>
+            <td>"绝对靠谱""放心"（越保证越可疑）</td>
+          </tr>
+          <tr>
+            <td><b>"到时候会不会加价"</b></td>
+            <td>到店被临时涨价</td>
+            <td>报价就是最终价，含税含服务费，确认单上写多少就是多少。如果酒店那边临时有问题，我负责换同级别或以上，差价我承担。这条可以写进聊天记录。</td>
+            <td>"应该不会"（模糊等于不可信）</td>
+          </tr>
+          <tr>
+            <td><b>"行程变了能退吗"</b></td>
+            <td>怕被套牢</td>
+            <td>分房型。可免费取消的房型价格会高一些，不可退的便宜。您要哪个我先报两个价，自己选。提前说清楚，比事后扯皮好。</td>
+            <td>笼统承诺"可以退"</td>
+          </tr>
+          <tr>
+            <td><b>"我再看看"</b></td>
+            <td>在比价，不着急</td>
+            <td>行，您先看。提醒一句：这个价是今天查的，房态会变，尤其周末和展会期间。定了日期跟我说一声，我再帮您查一次，不订也没关系。</td>
+            <td>"今天不定就没了"（假紧迫感招差评）</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>8.4 站内成交与站外联系：建议的优先级</h3>
+    <p>平台对站外联系方式有明确管控。以下三种方式按风险从低到高排列，建议优先采用前两种：</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th style="width:10%">优先级</th><th style="width:26%">方式</th><th style="width:12%">风险</th><th>说明</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="tag g">首选</span></td>
+            <td><b>全程站内成交</b>：站内沟通、站内下单、站内发确认单</td>
+            <td>无</td>
+            <td>最稳妥。平台支持虚拟服务类交易，有订单记录也便于处理售后争议</td>
+          </tr>
+          <tr>
+            <td><span class="tag y">次选</span></td>
+            <td><b>先拍小额定金</b>，在订单内沟通细节</td>
+            <td>较低</td>
+            <td>把意向转成订单，平台视为正常交易；后续复购也可在订单内联系</td>
+          </tr>
+          <tr>
+            <td><span class="tag r">不推荐</span></td>
+            <td>在聊天中发送联系方式</td>
+            <td>高</td>
+            <td>平台有文字与图片识别，规避手段持续失效；账号一旦被限制，前期积累全部归零</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <b>关于私域积累的建议：</b>如果目标是沉淀长期客户做复购，更稳妥的路径是<b>先用站内成交把销量和评价做起来</b>，再逐步引导。有成交记录、有评价积累的账号，用户信任度更高，平台对它的判定也更宽松。<b>新号一上线就大规模导流，是风险最高的做法。</b>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 09 ============ -->
+<div class="panel" id="p9">
+  <div class="card">
+    <h2><span class="n">09</span>合规与风控：不踩线才能跑得久</h2>
+    <p class="desc">酒店代订的合规风险与实物商品不同：<b>不是"能不能卖"的问题，而是"说出去的话能不能兑现"的问题</b>。价格承诺、资质表述、履约承诺，三类是高发区。</p>
+
+    <h3>9.1 四类高危表述与替代写法</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th style="width:14%">类别</th><th style="width:26%">建议避免</th><th style="width:28%">推荐写法</th><th>风险说明</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><b>价格承诺</b></td>
+            <td>"3折起"单独出现<br>"全网最低""比官网便宜一半""保证最低价"</td>
+            <td>"部分日期、部分房型 3 折起"<br>"低于官网价，具体以房态为准"<br>"同房型可与官网价对比"</td>
+            <td>绝对化价格表述属虚假宣传，可被投诉下架</td>
+          </tr>
+          <tr>
+            <td><b>资质表述</b></td>
+            <td>"官方""总代理""授权经销商""酒店直签""万豪合作商"</td>
+            <td>"代订服务""通过合作渠道出房""由第三方服务商提供房源"</td>
+            <td>无授权却使用官方类表述，属虚假资质，是平台重点整治对象</td>
+          </tr>
+          <tr>
+            <td><b>履约承诺</b></td>
+            <td>"保证有房""一定能订到""免费取消""保证升级套房""保证五星"</td>
+            <td>"确认房态后收款""可取消房型价格另计""房型以酒店实际安排为准"</td>
+            <td>无法兑现的承诺，直接导致纠纷与差评</td>
+          </tr>
+          <tr>
+            <td><b>站外引流</b></td>
+            <td>微信号、手机号、二维码<br>"加V""私聊发你""看我主页联系"</td>
+            <td>以站内沟通为主；必要时参见 8.4 的分级方式</td>
+            <td>触发平台风控，导致限流或账号受限</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>9.2 发布前自检表（每条商品过一遍）</h3>
+    <ul class="chk">
+      <li><span class="bx"></span>标题在 30 字以内，城市名在前六个字，无绝对化用词</li>
+      <li><span class="bx"></span>标价旁标注"起"，或详情首行写明"标价为起价"</li>
+      <li><span class="bx"></span>"3 折起"后面跟了限定语（部分日期 / 部分房型）</li>
+      <li><span class="bx"></span>正文写清了"由第三方渠道出房"，没有暗示官方身份</li>
+      <li><span class="bx"></span>没有"保证有房 / 免费取消 / 保证升级"等承诺</li>
+      <li><span class="bx"></span>图片无水印、无二维码、无联系方式、非酒店官方宣传图</li>
+      <li><span class="bx"></span>取消与退款规则在正文或首次响应中明确出现</li>
+      <li><span class="bx"></span>同账号内其他商品标题的主词不重复（避免内部抢词）</li>
+      <li><span class="bx"></span>与其他账号同城商品的首图不同（避免判重）</li>
+      <li><span class="bx"></span>发布后检查是否有"风险商品"提示，有则当天整改</li>
+    </ul>
+
+    <h3>9.3 高分险词自查清单</h3>
+    <p>以下词汇建议在标题、正文、图片文字中避免出现。发布前用平台搜索功能自查一遍即可。</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th style="width:18%">类别</th><th>建议避免的词汇</th></tr></thead>
+        <tbody>
+          <tr><td><b>绝对化</b></td><td>最便宜、最低价、全网最低、第一、唯一、顶级、绝对、100%、保证</td></tr>
+          <tr><td><b>资质类</b></td><td>官方、总代、总代理、授权、直签、合作酒店、直属</td></tr>
+          <tr><td><b>承诺类</b></td><td>保证有房、一定有房、免费取消、无条件退、保证升级、五星保证</td></tr>
+          <tr><td><b>引流类</b></td><td>微信、VX、加V、私聊、二维码、扫码、主页联系、电话</td></tr>
+          <tr><td><b>谨慎使用</b></td><td>内部价、协议价、漏洞价、bug价——这类词暗示特殊渠道，容易被质疑资质，建议改为"渠道价""合作渠道价"</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ok">
+      <b>关于"3 折起"的建议：</b>这个说法可以保留，因为它是这个品类最有效的价格锚点。但务必加限定语。原因不是平台挑剔，而是<b>一旦用户带着"3 折"的预期来问、发现实际是 6 折，就容易投诉"与描述不符"</b>。加四个字（部分房型），风险降一个量级，对真实转化的影响几乎为零——因为用户本来就预期特价有前提条件。
+    </div>
+
+    <h3>9.4 履约风控：比合规更致命的一环</h3>
+    <div class="grid g3">
+      <div class="box"><h4>先确认房态再收款</h4><p>不确认就收钱，等于把不确定性转嫁给用户。一旦出不了房，退款之外还要承担投诉与差评。</p></div>
+      <div class="box"><h4>留足确认时间</h4><p>承诺的确认时限要比实际能力宽松一些。说 30 分钟就按 45 分钟准备，避免"说好的时间没出单"。</p></div>
+      <div class="box"><h4>出问题主动补偿</h4><p>出不了房，第一动作是告知并给方案（升级或全额退款+补偿），不要拖。拖一天，差评就来了。</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 10 ============ -->
+<div class="panel" id="p10">
+  <div class="card">
+    <h2><span class="n">10</span>执行计划：第一个月怎么排</h2>
+    <p class="desc">按周推进，每周有明确交付物与验收标准。第一周是地基，也是决定整月节奏的一周。</p>
+
+    <h3>10.1 四周排期</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th style="width:10%">时间</th><th style="width:32%">关键动作</th><th style="width:28%">交付物</th><th>验收标准</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><b>第一周</b><br>第 1–7 天</td>
+            <td>① 账号资料搭建与实名<br>② 30 条商品文案定稿<br>③ 封面 A/B 两套各 6 张出图<br>④ 三套正文模板落地<br>⑤ 账号活跃度培养</td>
+            <td>商品清单表<br>封面素材 12 张<br>正文模板 3 套</td>
+            <td>商品文案确认可用；封面达到上架标准；账号能正常出曝光</td>
+          </tr>
+          <tr>
+            <td><b>第二周</b><br>第 8–14 天</td>
+            <td>① A、B、C 三号分批上架<br>② 开启封面 A/B 测试<br>③ 首次响应话术上线<br>④ 建立日报记录</td>
+            <td>上架完成<br>首份运营日报<br>第一周数据小结</td>
+            <td>出现首条真实咨询；点击率 ≥1.5%</td>
+          </tr>
+          <tr>
+            <td><b>第三周</b><br>第 15–21 天</td>
+            <td>① D、E 专家号上线<br>② 跑通商品开启付费推广<br>③ 下架零咨询商品<br>④ 胜出模板复制到 P1 城市</td>
+            <td>《双周复盘》<br>保留 / 修改 / 下架 三张清单<br>新城市商品 8 条</td>
+            <td>咨询到成交 ≥8%；单号日均咨询 ≥2</td>
+          </tr>
+          <tr>
+            <td><b>第四周</b><br>第 22–30 天</td>
+            <td>① 只保留 ROI 为正的投放计划<br>② 补充 P1 城市商品<br>③ 月度复盘<br>④ 下阶段扩号与扩城测算</td>
+            <td>《月度复盘》<br>下阶段执行方案<br>扩号测算表</td>
+            <td>达成阶段成交目标；投放 ROI ≥1.2</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>10.2 启动前需要同步的信息</h3>
+    <p>以下五项直接影响商品文案与投放测算的准确度。信息越完整，第一周的执行效率越高：</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th style="width:6%">#</th><th style="width:24%">信息项</th><th style="width:40%">对方案的影响</th><th>建议提供形式</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><b>月度成交目标与客单价区间</b></td><td>决定账号数量、商品数量与投放预算的测算基准</td><td>一句话即可，例如"月 30 单、客单 1500 左右"</td></tr>
+          <tr><td>2</td><td><b>3–5 组真实报价样例</b><br>（日期 / 酒店 / 房型 / 官网价 / 代订价）</td><td>作为文案中价格对比的真实依据，避免表述空泛</td><td>截图或表格均可</td></tr>
+          <tr><td>3</td><td><b>履约流程说明</b><br>（谁出房、多久确认、可否取消、失败如何处理）</td><td>决定话术底线与售后规则，也决定敢投多少量</td><td>口头说明后由我方整理成标准话术</td></tr>
+          <tr><td>4</td><td><b>可用的账号资源</b><br>（数量、是否已实名、是否有历史限制记录）</td><td>决定矩阵规模。多号结构是这套打法的基础</td><td>列出可用账号清单</td></tr>
+          <tr><td>5</td><td><b>已投放过的内容素材</b><br>（跑出过咨询或成交的标题与封面）</td><td>可直接复用已验证的写法，缩短测试周期</td><td>打包发送，无需整理</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="info">
+      <b>不用等全部信息齐备再启动。</b>第 1 项与第 3 项到位即可开始账号搭建与素材制作；第 2、5 项可在执行中随时补充，补充后我们会在 24 小时内更新对应文案。第 4 项建议在第一周内确认，因为它决定第三周能否按计划开启多号运营。
+    </div>
+
+    <h3>10.3 风险预判与应对</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th style="width:22%">风险</th><th style="width:10%">概率</th><th style="width:10%">影响</th><th>应对方案</th></tr></thead>
+        <tbody>
+          <tr><td><b>被判定重复铺货</b></td><td class="c">中高</td><td class="c">高</td><td>执行 3.4 的五条隔离规则；若某号被限流，暂停发布 3 天，只保留差异化最强的 3 条商品</td></tr>
+          <tr><td><b>履约问题引发差评</b></td><td class="c">中</td><td class="c">极高</td><td>先锁房后收款；每单留 30 分钟确认缓冲；出不了房当天给出方案并补偿，绝不拖延</td></tr>
+          <tr><td><b>有点击无咨询</b></td><td class="c">中高</td><td class="c">高</td><td>按 7.2 诊断：先查详情页三问，再查标价与"3 折起"的落差，最后查图片数量</td></tr>
+          <tr><td><b>付费投放 ROI 为负</b></td><td class="c">中</td><td class="c">中</td><td>按 6.2 模型核算；客单价低于 ¥3,000 的商品退回纯自然运营，付费只投利润款</td></tr>
+          <tr><td><b>账号被限制</b></td><td class="c">中</td><td class="c">高</td><td>一号一设备一网络；建议预备 2 个备用账号随时接替，避免单点中断</td></tr>
+          <tr><td><b>旺季房源不足</b></td><td class="c">中</td><td class="c">中</td><td>旺季前提前确认供给，必要时在商品中标注"旺季请提前 15 天预订"</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>10.4 首月验收标准</h3>
+    <div class="grid g4">
+      <div class="kpi"><span class="l">上线账号</span><span class="v">5</span><span class="s">3 矩阵 + 2 专家</span></div>
+      <div class="kpi gd"><span class="l">在售商品</span><span class="v">30</span><span class="s">四城 24 + 品牌 6</span></div>
+      <div class="kpi bl"><span class="l">累计咨询</span><span class="v">≥80</span><span class="s">五号合计</span></div>
+      <div class="kpi pu"><span class="l">累计成交</span><span class="v">≥10</span><span class="s">验证闭环即可</span></div>
+    </div>
+    <div class="ok">
+      <b>关于首月指标的设计思路：</b>首月不设高 GMV 目标，是因为<b>第一个月的真正任务是验证模型，而不是冲收入</b>——验证哪几个城市的词有流量、哪套封面点击率高、咨询到成交的真实转化率是多少。这三件事验证清楚，第二个月才是放量赚钱的时候。<b>如果首月就压高指标，容易为了数字去做低价单，反而把模型带偏，第二个月的数据也不可信。</b>
+    </div>
+
+    <h3>10.5 第二阶段展望</h3>
+    <div class="tl">
+      <div class="tl-i"><div class="d">第 31–45 天</div><h4>复制到 P1 城市</h4><p>把首月胜出的标题结构与封面模板，平移到威尼斯、佛罗伦萨、马德里、阿姆斯特丹。商品数与账号数同步扩充到 8 个号、50 条商品。</p></div>
+      <div class="tl-i"><div class="d">第 46–60 天</div><h4>建立淡旺季节奏</h4><p>按欧洲旅游季节规律调整投放力度：暑期与圣诞前是旺季，1–2 月是淡季。淡季用低预算维持权重，旺季集中放量。</p></div>
+      <div class="tl-i"><div class="d">第 61–90 天</div><h4>形成可复制产能</h4><p>沉淀标准化物料库（标题模板、封面模板、话术库），使新增一个城市的边际成本降到最低。</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  欧洲酒店代订 · 闲鱼投放策略方案　|　闲鱼账号 xy885852949366　|　2026 年 10 月<br>
+  本方案所有测算基于公开市场数据与平台投放经验推演，实际执行以项目实测数据为准
+</div>
+
+
+</div>
+
+<script>
+(function(){
+  var bar = document.getElementById('tabs');
+  function activate(tabEl){
+    if(!tabEl) return;
+    var target = document.getElementById(tabEl.dataset.p);
+    if(!target) return;
+    bar.querySelectorAll('button').forEach(function(x){ x.classList.remove('on'); });
+    document.querySelectorAll('.wrap > .panel').forEach(function(x){ x.classList.remove('on'); });
+    tabEl.classList.add('on');
+    target.classList.add('on');
+    try{
+      if(getComputedStyle(bar).display === 'flex'){
+        var st = bar.getBoundingClientRect(), r = tabEl.getBoundingClientRect();
+        if(r.left < st.left + 8) bar.scrollLeft -= (st.left + 8 - r.left);
+        else if(r.right > st.right - 8) bar.scrollLeft += (r.right - st.right + 8);
+      }
+    }catch(_){}
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+  bar.addEventListener('click', function(e){
+    var t = e.target.closest('button');
+    if(t) activate(t);
+  });
+  bar.addEventListener('touchend', function(e){
+    var t = e.target.closest('button');
+    if(t){ e.preventDefault(); activate(t); }
+  }, {passive:false});
+
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('.cp');
+    if(!btn) return;
+    var pre = btn.parentElement.parentElement.querySelector('pre');
+    if(!pre) return;
+    var txt = pre.innerText, old = btn.textContent;
+    var done = function(){ btn.textContent='已复制'; setTimeout(function(){ btn.textContent=old; }, 1400); };
+    try{
+      var ta = document.createElement('textarea');
+      ta.value = txt; ta.setAttribute('readonly','');
+      ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;pointer-events:none';
+      document.body.appendChild(ta);
+      ta.select(); ta.setSelectionRange(0, txt.length);
+      var ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+      if(ok){ done(); return; }
+    }catch(_){}
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(done).catch(function(){ alert('复制失败，请长按文本手动复制'); });
+    }else{ alert('复制失败，请长按文本手动复制'); }
+  });
+})();
+</script>
+</body>
+</html>
